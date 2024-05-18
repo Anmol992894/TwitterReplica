@@ -1,23 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import FrontPage from './Components/FrontPage';
+import Login from './pages/Login';
+import Loading from './Components/LoadingComponent';
+import Register from './pages/Register';
+import UserProfile from './pages/UserProfile';
+import TweetDetailsPage from './pages/TweetdetailPage';
+import OtherProfile from './pages/OtherProfile';
+import AllTweet from './pages/AllTweet';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+      <Routes>
+        <Route exact path='/' element={<Login/>}></Route>
+        <Route exact path='/register' element={<Register/>}></Route>
+        <Route exact path='/tweetdetail' element={<TweetDetailsPage/>}></Route>
+        <Route exact path='/home' element={<AllTweet/>}></Route>
+        <Route exact path='/userProfile' element={<UserProfile/>}></Route>
+        <Route exact path='/otherProfile' element={<OtherProfile/>}></Route>
+        <Route exact path='/front' element={<FrontPage/>}></Route>
+        <Route exact path='*' element={<Loading/>}></Route>
+      </Routes>
+      </BrowserRouter>
     </div>
   );
 }
